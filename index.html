@@ -1,0 +1,47 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <link rel="stylesheet" type= text/css href="style.css">
+
+    <title>Code Quiz</title>
+</head>
+
+<body>
+
+    <div id="start" class="homePage text-center">
+        <h1>Code Quiz Challenge</h1>
+        <h2>Try to the answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your scoretime by ten seconds!</h2>
+        <button id="startGame" class="btn btn-group-lg btn-primary">Start</button>
+    </div>
+
+    <div class="container text-center">
+
+        <h2 id="final" style="display: none;">
+        </h2>
+        <button id="pa" class="btn btn-group-lg btn-primary" style="display: none;">Play Again</button>
+        <h2 id="quesPosition" style="display: none;">
+        
+        </h2>
+        <div id="game" style="display: none;">
+        
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+    <script src="logic.js"></script>
+    <script src="questions.js"></script>
+
+
+</body>
+
+</html>
