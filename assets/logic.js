@@ -85,7 +85,7 @@ function showStats() {
     playAgainBtn.style.display = "block";
     finalStats.innerHTML = "";
     var h2 = document.createElement(h2);
-    h2.textContent = "You Got " + correctAnswers + "out of" + numOfQuestions;
+    h2.textContent = "You Got " + correctAnswers + " out of " + numOfQuestions;
     finalStats.appendChild(h2);
 }
 
