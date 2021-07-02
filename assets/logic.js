@@ -6,6 +6,7 @@ var finalStats = document.getElementById("final");
 var playAgainBtn = document.getElementById("pa");
 
 var currentQuestion;
+var currentQuestionIndex = 0;
 var correctAnswers;
 var numOfQuestions = questions.length;
 var counter;
@@ -15,13 +16,31 @@ startBtn.addEventListener("click", function (e) {
     beginGame();
 });
 
+var sec = 60;
+function startTimer(){
+    console.log('timer suppose to go')
+    var timer = setInterval(function(){
+        counter--;
+        document.getElementById('timerDisplay').innerHTML='00:'+counter;
+        if (counter < 0) {
+            clearInterval(timer);
+            alert("Time is up!")
+        }
+    }, 1000);
+}
+// document.getElementById('incorrect').addEventListener('click', function() {
+//     sec -= 5;
+//     document.getElementById('timerDisplay').innerHTML='00:'+sec;
+// });
+
 function beginGame() {
     startDiv.style.display = "none";
     gameDiv.style.display = "block";
     quesPosition.style.display = "block";
     finalStats.style.display = "none";
     playAgainBtn.style.display = "none";
-    counter = 0;
+    counter = 60;
+    startTimer();
     correctAnswers = 0;
     displayQuestion();
 }
@@ -32,8 +51,8 @@ function emptyDiv() {
 
 function displayQuestion() {
     emptyDiv();
-    currentQuestion = questions[counter];
-    var pos = counter + 1;
+    currentQuestion = questions[currentQuestionIndex];
+    var pos = currentQuestionIndex + 1;
     quesPosition.textContent = "Question: " + pos + "/" + numOfQuestions;
     var question = document.createElement("h2");
     question.textContent = currentQuestion.ques;
@@ -62,16 +81,18 @@ gameDiv.addEventListener("click", function (e) {
 function compareAnswers(chosenAnswer) {
     if (chosenAnswer === currentQuestion.answer) {
         correctAnswers++;
-        counter++;
+        currentQuestionIndex++;
         playOrEnd();
     } else {
-        counter++;
+        currentQuestionIndex++;
+        counter-= 5;
+        console.log(counter)
         playOrEnd();
     }
 }
 
 function playOrEnd() {
-    if (counter === numOfQuestions) {
+    if (currentQuestionIndex === numOfQuestions) {
         showStats();
     } else {
         displayQuestion();
@@ -91,5 +112,8 @@ function showStats() {
 
 playAgainBtn.addEventListener("click", function (e) {
     e.preventDefault();
+    currentQuestionIndex = 0;
     beginGame();
 });
+
+
